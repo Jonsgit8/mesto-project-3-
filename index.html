@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Borisov">
+    <meta name="keywords" content="html, css, javascript">
+    <meta name="description" content="Borisov's third project">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+  </head>
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/logo_place_header.png">
+        <div class="header__line"></div>
+      </header>
+      <main class="main">
+        <section class="profile">
+          <div class="profile__about">
+            <img class="profile__avatar" src="./images/JIK.png">
+            <div class="profile__info">
+              <div class="profile__head">
+                <h3 id="user-name" class="profile__name"></h3>
+                <button id="open-edit-popup" class="profile__correct"></button>
+              </div>
+              <p id="user-occupation" class="profile__occupation"></p>
+            </div>
+          </div>
+          <button class="profile__add"></button>
+        </section>
+        <section class="elements">
+          <ul class="elements_block">
+            <li class="elements__card">
+              <img class="elements__img" src="./images/Karachaevsk.png">
+              <div class="elements__down">
+                <p class="elements__name">Карачаево-Черкессия</p>
+                <button class="elements__like"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__img" src="./images/Elbrus.png">
+              <div class="elements__down">
+                <p class="elements__name">Гора Эльбрус</p>
+                <button class="elements__like"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__img" src="./images/Dombai.png">
+              <div class="elements__down">
+                <p class="elements__name">Домбай</p>
+                <button class="elements__like"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__img" src="./images/Vodenichane.jpg">
+              <div class="elements__down">
+                <p class="elements__name">Воденичане</p>
+                <button class="elements__like"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__img" src="./images/Zelenograd.jpg">
+              <div class="elements__down">
+                <p class="elements__name">Зеленоград</p>
+                <button class="elements__like"></button>
+              </div>
+            </li>
+            <li class="elements__card">
+              <img class="elements__img" src="./images/Khimki.jpg">
+              <div class="elements__down">
+                <p class="elements__name">Химки</p>
+                <button class="elements__like"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <div id="edit-popup" class="popup popup_opened">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <img id="close-edit-popup" class="popup__close" src="./images/Close.svg" alt="Close">
+          <form class="form">
+            <input id="user-name-input" class="form__input" type="text">
+            <input id="user-occupation-input" class="form__input" type="text">
+            <button class="form__button" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </main>
+      <footer class="footer">
+        <img class="footer__img" src="./images/logo_place_futer.png">
+      </footer>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
