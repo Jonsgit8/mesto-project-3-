@@ -1,5 +1,5 @@
 .elements__name {
-  width: 190px;
+  max-width: 190px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
