@@ -1,0 +1,27 @@
+.profile__add {
+  width: 150px;
+  height: 50px;
+  margin-top: 34px;
+  background: url(../../../images/ButtonAdd.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 4px solid #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.profile__add:hover {
+opacity: .6;
+}
+
+@media (max-width: 710px) {
+  .profile__add {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .profile__add {
+    width: 100%;
+  }
+}

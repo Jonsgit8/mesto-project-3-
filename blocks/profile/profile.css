@@ -1,0 +1,18 @@
+.profile {
+  margin: 0 auto;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 880px) {
+  .profile {
+    padding: 42px 19px 0 19px;
+  }
+}
+
+@media (max-width: 710px) {
+  .profile {
+    flex-direction: column;
+  }
+}
