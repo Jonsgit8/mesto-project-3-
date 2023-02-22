@@ -5,23 +5,21 @@
   background: url(../../../images/ButtonAdd.svg);
   background-repeat: no-repeat;
   background-position: center;
-  border: 4px solid #fff;
+  background-size: 22px;
+  border: 2px solid #fff;
   box-sizing: border-box;
   cursor: pointer;
+  transition: 0.1s linear;
 }
 
 .profile__add:hover {
-opacity: .6;
+  opacity: .6;
 }
 
 @media (max-width: 710px) {
   .profile__add {
     margin: 0 auto;
-  }
-}
-
-@media (max-width: 500px) {
-  .profile__add {
-    width: 100%;
+    width: 280px;
+    background-size: 16px;
   }
 }

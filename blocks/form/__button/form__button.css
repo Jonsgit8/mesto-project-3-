@@ -1,6 +1,5 @@
 .form__button {
   width: 358px;
-  height: 50px;
   background: #000000;
   border-radius: 2px;
   font-weight: 400;
@@ -9,6 +8,10 @@
   text-align: center;
   color: #ffffff;
   margin-top: 48px;
+  cursor: pointer;
+  transition: opacity 1s linear;
+  border: 0;
+  padding: 16px 0;
 }
 
 .form__button:hover {
@@ -20,6 +23,6 @@
     width: 238px;
     font-size: 14px;
     line-height: 16.94px;
-    margin-top: 43px;
+    margin-top: 45px;
   }
 }

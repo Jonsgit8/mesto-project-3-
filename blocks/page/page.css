@@ -1,5 +1,6 @@
 .page {
   max-width: 880px;
+  min-width: 320px;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

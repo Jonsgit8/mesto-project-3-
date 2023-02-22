@@ -1,19 +1,19 @@
-.popup__before {
+.popup__shadow {
   position: fixed;
   top: calc(50% - 200px);
   left: calc(50% - 215px);
   width: 430px;
-  height: 330px;
   background: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
+  padding-bottom: 40px;
 }
 
 @media (max-width: 640px) {
-  .popup__before {
+  .popup__shadow {
     width: 282px;
-    height: 322px;
     top: 123px;
     left: calc(50% - 141px);
+    padding-bottom: 25px;
   }
 }
