@@ -1,4 +1,45 @@
 @import url(../vendor/normalize.css);
-@import url(../fonts/fonts.css);
+@import url(../vendor/fonts.css);
 
+<<<<<<< Updated upstream
 @import url(../blocks/before_bem.css);
+=======
+@import url(../blocks/body/body.css);
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__about/profile__about.css);
+@import url(../blocks/profile/__add/profile__add.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__head/profile__head.css);
+@import url(../blocks/profile/__correct/profile__correct.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__occupation/profile__occupation.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__block/elements__block.css);
+@import url(../blocks/elements/__card/elements__card.css);
+@import url(../blocks/elements/__down/elements__down.css);
+@import url(../blocks/elements/__img/elements__img.css);
+@import url(../blocks/elements/__like/elements__like.css);
+@import url(../blocks/elements/__like/_active/elements__like_active.css);
+@import url(../blocks/elements/__name/elements__name.css);
+
+@import url(../blocks/footer/__logo/footer__logo.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__shadow/popup__shadow.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__title/popup__title.css);
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__input/form__input.css);
+
+
+>>>>>>> Stashed changes
