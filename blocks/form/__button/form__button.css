@@ -7,7 +7,7 @@
   line-height: 22px;
   text-align: center;
   color: #ffffff;
-  margin-top: 48px;
+  margin-top: 18px;
   cursor: pointer;
   transition: opacity 1s linear;
   border: 0;
@@ -23,6 +23,6 @@
     width: 238px;
     font-size: 14px;
     line-height: 16.94px;
-    margin-top: 45px;
+    margin-top: 15px;
   }
 }
