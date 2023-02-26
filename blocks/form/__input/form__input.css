@@ -5,12 +5,14 @@
   line-height: 17px;
   color: #000000;
   border: 0;
-  padding-bottom: 13px;
+  padding-bottom: 7px;
+  margin-bottom: 30px;
   outline: none;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 640px) {

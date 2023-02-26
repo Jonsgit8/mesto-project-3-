@@ -4,8 +4,8 @@ const userOccupationElement = document.querySelector('.profile__occupation');/*2
 const editPopUp = document.querySelector ('.popup');/*попап*/
 const editProfileOpenButton = document.querySelector('.profile__correct');/*карандаш профиля*/   /* */
 
-const userNameInput = document.querySelector('.form__input_name');/*1-ая строка формы*/
-const userOccupationInput = document.querySelector('.form__input_occupation');/*2-ая строка формы*/
+const userNameInput = document.querySelector('.form__input_type_name');/*1-ая строка формы*/
+const userOccupationInput = document.querySelector('.form__input_type_occupation');/*2-ая строка формы*/
 
 /*реализация функционала открытия попап и заполнения полей формы*/
 editProfileOpenButton.addEventListener('click', function(event) {

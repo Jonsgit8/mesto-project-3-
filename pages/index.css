@@ -37,7 +37,4 @@
 
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__button/form__button.css);
-@import url(../blocks/form/__span/form__span.css);
 @import url(../blocks/form/__input/form__input.css);
-
-
