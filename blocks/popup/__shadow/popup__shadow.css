@@ -18,8 +18,5 @@
 @media (max-width: 640px) {
   .popup__shadow {
     width: 282px;
-    top: 123px;
-    left: calc(50% - 141px);
-    padding-bottom: 20px;
   }
 }

@@ -1,4 +1,5 @@
 .popup__shadow_preview {
   background-color: transparent;
   width: auto;
+  padding-bottom: 0;
 }
