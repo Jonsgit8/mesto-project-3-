@@ -1,12 +1,18 @@
 .popup__shadow {
-  position: fixed;
-  top: calc(50% - 200px);
-  left: calc(50% - 215px);
+  position: relative;
+  z-index: 0;
   width: 430px;
   background: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   padding-bottom: 32px;
+  opacity: 0;
+  animation: popUp 1s forwards;
+}
+
+@keyframes popUp {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
 }
 
 @media (max-width: 640px) {

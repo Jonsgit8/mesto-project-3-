@@ -22,17 +22,22 @@
 @import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__down/elements__down.css);
 @import url(../blocks/elements/__img/elements__img.css);
+@import url(../blocks/elements/__img/_active/elements__img_active.css);
 @import url(../blocks/elements/__like/elements__like.css);
 @import url(../blocks/elements/__like/_active/elements__like_active.css);
 @import url(../blocks/elements/__name/elements__name.css);
+@import url(../blocks/elements/__trash/elements__trash.css);
 
 @import url(../blocks/footer/__logo/footer__logo.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__shadow/popup__shadow.css);
+@import url(../blocks/popup/__shadow/_preview/popup__shadow_preview.css);
+@import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__cross/popup__cross.css);
+@import url(../blocks/popup/__pic/popup__pic.css);
 @import url(../blocks/popup/__title/popup__title.css);
 
 @import url(../blocks/form/form.css);

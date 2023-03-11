@@ -13,17 +13,13 @@
   <body class="body">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo_place_header.png" alt="Логотип Хедер">
-      </header>
+        <img class="header__logo" src="./images/logo_place_header.png" alt="Логотип Хедер"></header>
       <main class="main">
         <section class="profile">
-          <div class="profile__about">
-            <img class="profile__avatar" src="./images/JIK.png" alt="Аватар">
+          <div class="profile__about"><img class="profile__avatar" src="./images/JIK.png" alt="Аватар">
             <div class="profile__info">
-              <div class="profile__head">
-                <h1 id="user-name" class="profile__name">Жак-Ив Кусто</h1>
-                <button id="open-popup" type="button" class="profile__correct"></button>
-              </div>
+              <div class="profile__head"><h1 id="user-name" class="profile__name">Жак-Ив Кусто</h1>
+                <button id="open-popup" type="button" class="profile__correct"></button></div>
               <p id="user-occupation" class="profile__occupation">Исследователь океана</p>
             </div>
           </div>
@@ -31,51 +27,19 @@
         </section>
         <section class="elements">
           <ul class="elements__block">
-            <li class="elements__card">
-              <img class="elements__img" src="./images/Karachaevsk.png" alt="Карачаевск">
-              <div class="elements__down">
-                <h2 class="elements__name">Карачаевск</h2>
-                <button class="elements__like" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__img" src="./images/Elbrus.png" alt="Эльбрус">
-              <div class="elements__down">
-                <h2 class="elements__name">Гора Эльбрус</h2>
-                <button class="elements__like" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__img" src="./images/Dombai.png" alt="Домбай">
-              <div class="elements__down">
-                <h2 class="elements__name">Домбай</h2>
-                <button class="elements__like" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__img" src="./images/Vodenichane.jpg" alt="Воденичане">
-              <div class="elements__down">
-                <h2 class="elements__name">Воденичане</h2>
-                <button class="elements__like" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__img" src="./images/Zelenograd.jpg" alt="Зеленоград">
-              <div class="elements__down">
-                <h2 class="elements__name">Зеленоград</h2>
-                <button class="elements__like" type="button"></button>
-              </div>
-            </li>
-            <li class="elements__card">
-              <img class="elements__img" src="./images/Khimki.jpg" alt="Химки">
-              <div class="elements__down">
-                <h2 class="elements__name">Химки</h2>
-                <button class="elements__like" type="button"></button>
-              </div>
-            </li>
+            <template id="templateCard">
+              <li class="elements__card">
+                <button class="elements__trash" type="button"></button>
+                <img class="elements__img">
+                <div class="elements__down">
+                  <h2 class="elements__name"></h2>
+                  <button class="elements__like" type="button"></button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
-        <div id="edit-popup" class="popup">
+        <div id="profile-popup" class="popup">
           <div class="popup__shadow">
             <h3 class="popup__title">Редактировать профиль</h3>
              <button id="popup-close" class="popup__close" type="button">
@@ -86,6 +50,28 @@
               <input id="user-occupation-input" class="form__input form__input_type_occupation" name="user-occupation-input" type="text">
               <button id="popup-submit" class="form__button" type="submit">Сохранить</button>
             </form>
+          </div>
+        </div>
+        <div id="popup-place" class="popup"> 
+          <div class="popup__shadow">
+            <h3 class="popup__title">Новое место</h3>
+             <button id="popup-place-close" class="popup__close" type="button">
+              <img class="popup__cross" src="./images/Close.svg" alt="Закрыть">
+            </button>
+            <form id="place-form-input" class="form" name="place">
+              <input id="place-name-input" name="place-name-input" class="form__input form__input_type_name" type="text" placeholder="Новое место">
+              <input id="place-link-input" name="place-link-input" class="form__input form__input_type_occupation" type="text" placeholder="Ссылка на картинку">
+              <button id="popup-place-submit" class="form__button" type="submit">Сохранить</button>
+            </form>
+          </div>
+        </div>
+        <div id="popup-place-img" class="popup">
+          <div class="popup__shadow popup__shadow_preview">
+            <button id="popup-img-close" class="popup__close" type="button">
+              <img class="popup__cross" src="./images/Close.svg" alt="Закрыть">
+            </button>
+            <img class="popup__pic" src="" alt="">
+            <span class="popup__text"></span>
           </div>
         </div>
       </main>

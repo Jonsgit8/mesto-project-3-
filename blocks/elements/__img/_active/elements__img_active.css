@@ -1,0 +1,7 @@
+.elements__img_active {
+  position: absolute;
+  z-index: 0;
+  top: calc(50% - 200px);
+  left: calc(50% - 215px);
+  width: 430px;
+}
