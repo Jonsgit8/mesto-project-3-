@@ -1,6 +1,7 @@
 const userNameElement = document.querySelector('.profile__name');/*1-ая строка Profile*/
 const userOccupationElement = document.querySelector('.profile__occupation');/*2-ая строка Profile*/
-let formElementInput = document.querySelector('.form')/*форма*/
+const profileForm = document.querySelector('#profile-form')/*форма*/
+const placeForm = document.querySelector('#place-form')/*форма Place*/
 const userNameInput = document.querySelector('.form__input_type_name');/*1-ая строка формы*/
 const userOccupationInput = document.querySelector('.form__input_type_occupation');/*2-ая строка формы*/
 
@@ -12,9 +13,16 @@ const profilePopUp = document.querySelector ('#profile-popup');/*попап Prof
 const editPlacePopup = document.querySelector('#popup-place')/*попап Place*/
 const previewImgPopup = document.querySelector('#popup-place-img')/*попап Img*/
 
-const editProfileCloseButton = document.querySelector('.popup__close');/*Крестик попап-profile*/
+const editProfileCloseButton = document.querySelector('#popup-profile-close');/*Крестик попап-profile*/
 const editPlaceCloseButton = document.querySelector('#popup-place-close');/*крестик popup-place*/
 const prewiewImgCloseButton = document.querySelector('#popup-img-close');/*крестик popup-img*/
+
+const elementsBlock = document.querySelector('.elements__block')/*контейнер Places*/
+const placeNameInput = placeForm.querySelector('#place-name-input')
+const placeLinkInput = placeForm.querySelector('#place-link-input')
+const newCard = document.querySelector('#templateCard')/*шаблон Place*/
+const previewImg = document.querySelector('.popup__pic')/*Img Place*/
+const previewText = document.querySelector('.popup__text')/*текст Place*/
 
 /*Открытие Закрытие popup*/
 function closePopup(popup) {
@@ -39,68 +47,56 @@ prewiewImgCloseButton.addEventListener('click', () => closePopup(previewImgPopup
 
 /*реализация функционала открытия попап и заполнения полей формы*/
 editProfileOpenButton.addEventListener('click', function(event) {
-  profilePopUp.classList.add('popup_opened');/*move класс*/
+  openPopup(profilePopUp);/*move класс*/
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent;
 });
 
 /*реализация функционала Сохранения формы*/
-formElementInput.addEventListener('submit', function (event) {
+function handleProfileForm (event) {
   event.preventDefault();
   userNameElement.textContent = userNameInput.value
   userOccupationElement.textContent =  userOccupationInput.value;
   closePopup(profilePopUp)
-})
+}
+profileForm.addEventListener('submit', handleProfileForm)
 
-const cards = [
-  { name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',},
-  { name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',},
-  { name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',},
-  { name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',},
-  { name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',},
-  { name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',}]; 
 /*реализация хранения 6 карточек*/
-const elementsBlock = document.querySelector('.elements__block')
-
 function createCard(card) {
   /*клонирование и наполнение*/
-  const newCard = document.querySelector('#templateCard').content.cloneNode(true)
-  const cardName = newCard.querySelector('.elements__name')
-  const cardImg = newCard.querySelector('.elements__img')
+  const cloneCard = newCard.content.cloneNode(true)
+  const cardName = cloneCard.querySelector('.elements__name')
+  const cardImg = cloneCard.querySelector('.elements__img')
   cardImg.setAttribute('src', card.link)
-  cardImg.setAttribute('alt', card.alt)
+  cardImg.setAttribute('alt', card.name)
   cardName.textContent = card.name
   /*клик на корзину*/
-  const deletePlaceButton = newCard.querySelector('.elements__trash')
+  const deletePlaceButton = cloneCard.querySelector('.elements__trash')
   deletePlaceButton.addEventListener('click', handleDeleteButtonClick)
   /*клик на лайк*/
-  const likeButton = newCard.querySelector('.elements__like')
-  likeButton.addEventListener('click', () => {
-  likeButton.classList.toggle('elements__like_active')
-  })
-  elementsBlock.prepend(newCard)
+  const likeButton = cloneCard.querySelector('.elements__like')
+  likeButton.addEventListener('click', () => handleLikeClick(likeButton))
+  addCard(cloneCard)
   /*клик на картинку*/
   cardImg.addEventListener('click', () => handlePreviewImgClick(card))
+}
+function addCard(cloneCard) {
+  return elementsBlock.prepend(cloneCard)
 }
 cards.forEach((card)=>{
   createCard(card)
 })
+/*клик на лайк*/
+function handleLikeClick(button) {
+  button.classList.toggle('elements__like_active')
+}
 /*клик для preview картинки*/
 function handlePreviewImgClick(card) {
-  popupPlaceImg.classList.add('popup_opened')
-  const previewImg = document.querySelector('.popup__pic')
+  openPopup(previewImgPopup)
   previewImg.src = card.link
   previewImg.alt = card.name
-  const previewText = document.querySelector('.popup__text')
   previewText.textContent = card.name
 }
-
 
 /*Удаление карточки Place*/
 function handleDeleteButtonClick (event) {
@@ -109,14 +105,18 @@ function handleDeleteButtonClick (event) {
   card.remove()
 }
 /*Сохранение popup-Place*/
-let placeElementInput = document.querySelector('#place-form-input')/*форма Place*/
-placeElementInput.addEventListener('submit', function (event) {
+function handleCreateCard(event) {
   event.preventDefault();
-  let placeNameInput = placeElementInput.querySelector('#place-name-input').value
-  let link = placeElementInput.querySelector('#place-link-input').value
-  let card = {name: placeNameInput, 
-              link,
-              alt: "text"};
-    createCard(card);
-  closePopup(editPlacePopup)
-})
+
+  const card = {
+    name: placeNameInput.value, 
+    link: placeLinkInput.value
+  };
+
+  createCard(card);
+  placeForm.reset();
+  closePopup(editPlacePopup);
+}
+
+placeForm.addEventListener('submit', handleCreateCard)
+
