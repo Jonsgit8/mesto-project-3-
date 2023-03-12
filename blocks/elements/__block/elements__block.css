@@ -17,11 +17,6 @@
 @media (max-width: 710px) {
   .elements__block {
     gap: 20px;
-  }
-}
-
-@media (max-width: 620px) {
-  .elements__block {
     justify-content: center;
   }
 }
