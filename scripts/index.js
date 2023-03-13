@@ -76,15 +76,16 @@ function createCard(card) {
   /*клик на лайк*/
   const likeButton = cloneCard.querySelector('.elements__like')
   likeButton.addEventListener('click', () => handleLikeClick(likeButton))
-  addCard(cloneCard)
   /*клик на картинку*/
   cardImg.addEventListener('click', () => handlePreviewImgClick(card))
+  return cloneCard
 }
 function addCard(cloneCard) {
   return elementsBlock.prepend(cloneCard)
 }
 cards.forEach((card)=>{
-  createCard(card)
+  const newCard = createCard(card) // Cоздаём новую карточку
+  addCard(newCard) // Отрисовываем новую карточку в DOM
 })
 /*клик на лайк*/
 function handleLikeClick(button) {
@@ -97,7 +98,6 @@ function handlePreviewImgClick(card) {
   previewImg.alt = card.name
   previewText.textContent = card.name
 }
-
 /*Удаление карточки Place*/
 function handleDeleteButtonClick (event) {
   const button = event.target
@@ -109,7 +109,7 @@ function handleCreateCard(event) {
   event.preventDefault();
 
   const card = {
-    name: placeNameInput.value, 
+    name: placeNameInput.value,
     link: placeLinkInput.value
   };
 
