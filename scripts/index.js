@@ -44,7 +44,6 @@ editPlaceCloseButton.addEventListener('click', function(event) {
 /*Закрытие по крестику попап Img*/
 prewiewImgCloseButton.addEventListener('click', () => closePopup(previewImgPopup));
 
-
 /*реализация функционала открытия попап и заполнения полей формы*/
 editProfileOpenButton.addEventListener('click', function(event) {
   openPopup(profilePopUp);/*move класс*/
@@ -115,6 +114,8 @@ function handleCreateCard(event) {
 
   createCard(card);
   placeForm.reset();
+  const newCard = createCard(card) // Cоздаём новую карточку
+  addCard(newCard) // Отрисовываем новую карточку в DOM
   closePopup(editPlacePopup);
 }
 
