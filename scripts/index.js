@@ -1,6 +1,6 @@
 const userNameElement = document.querySelector('.profile__name');/*1-ая строка Profile*/
 const userOccupationElement = document.querySelector('.profile__occupation');/*2-ая строка Profile*/
-const profileForm = document.querySelector('#profile-form')/*форма*/
+const profileForm = document.querySelector('#profile-form')/*форма Profile*/
 const placeForm = document.querySelector('#place-form')/*форма Place*/
 const userNameInput = document.querySelector('.form__input_type_name');/*1-ая строка формы*/
 const userOccupationInput = document.querySelector('.form__input_type_occupation');/*2-ая строка формы*/
@@ -9,7 +9,7 @@ const editProfileOpenButton = document.querySelector('.profile__correct');/*кн
 const addPlaceOpenButton = document.querySelector('.profile__add');/*кнопка Place */
 const popupPlaceImg = document.querySelector('#popup-place-img')/*картинка Place*/
 
-const profilePopUp = document.querySelector ('#profile-popup');/*попап Profile*/
+const profilePopUp = document.querySelector ('#popup-profile');/*попап Profile*/
 const editPlacePopup = document.querySelector('#popup-place')/*попап Place*/
 const previewImgPopup = document.querySelector('#popup-place-img')/*попап Img*/
 

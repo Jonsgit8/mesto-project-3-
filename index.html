@@ -39,15 +39,17 @@
             </template>
           </ul>
         </section>
-        <div id="profile-popup" class="popup">
+        <div id="popup-profile" class="popup">
           <div class="popup__shadow">
             <h3 class="popup__title">Редактировать профиль</h3>
              <button id="popup-profile-close" class="popup__close" type="button">
               <img class="popup__cross" src="./images/Close.svg" alt="Закрыть">
             </button>
-            <form id="profile-form" class="form" name="profile">
-              <input id="user-name-input" class="form__input form__input_type_name" name="user-name-input" type="text">
-              <input id="user-occupation-input" class="form__input form__input_type_occupation" name="user-occupation-input" type="text">
+            <form id="profile-form" class="form" name="profile" novalidate>
+              <input id="user-name-input" class="form__input form__input_type_name form__input_type_error" name="user-name-input" type="text" minlength="2" maxlength="40" required>
+              <span class="form__error  "></span>
+              <input id="user-occupation-input" class="form__input form__input_type_occupation form__input_type_error" name="user-occupation-input" type="text" minlength="2" maxlength="200" required>
+              <span class="form__error form__error_passed"></span>
               <button id="popup-submit" class="form__button" type="submit">Сохранить</button>
             </form>
           </div>
@@ -58,9 +60,11 @@
              <button id="popup-place-close" class="popup__close" type="button">
               <img class="popup__cross" src="./images/Close.svg" alt="Закрыть">
             </button>
-            <form id="place-form" class="form" name="place">
-              <input id="place-name-input" name="place-name-input" class="form__input form__input_type_name" type="text" placeholder="Новое место">
-              <input id="place-link-input" name="place-link-input" class="form__input form__input_type_occupation" type="text" placeholder="Ссылка на картинку">
+            <form id="place-form" class="form" name="place" novalidate>
+              <input required id="place-name-input" name="place-name-input" class="form__input form__input_type_name" type="text" placeholder="Новое место" minlength="2" maxlength="30" required>
+              <span class="form__error form__error_passed"></span>
+              <input required type="url" id="place-link-input" name="place-link-input" class="form__input form__input_type_occupation" type="text" placeholder="Ссылка на картинку" required>
+              <span class="form__error form__error_url"></span>
               <button id="popup-place-submit" class="form__button" type="submit">Сохранить</button>
             </form>
           </div>
@@ -80,6 +84,7 @@
       </footer>
     </div>
     <script src="./scripts/initial-сards.js"></script>
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
