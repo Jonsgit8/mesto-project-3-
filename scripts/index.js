@@ -27,14 +27,60 @@ const previewText = document.querySelector('.popup__text')/*текст Place*/
 /*Открытие Закрытие popup*/
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  disableEscListener()
 }
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  enableEscListener()
+  const openedPopup = document.querySelector('.popup_opened')
+  openedPopup.addEventListener('click', (e) => closeOverlay(e, popup))
+}
+/*Закрытие на Overlay*/
+function closeOverlay(e, popup) {
+  if (e.target === e.currentTarget) {
+    closePopup(popup)
+  }
+}
+/*Закрытие на ESC*/
+function onEscClose(e) {
+  console.log('onEscClose')
+  if (e.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
+  }
+}
+function enableEscListener() {
+  document.addEventListener('keyup', onEscClose)
+}
+function disableEscListener() {
+  document.removeEventListener('keyup', onEscClose)
+}
+/*стилизация кнопки Сохранить*/
+function checkAny(popup) {
+  const form = popup.querySelector('.form')
+  const inputList = form.querySelectorAll('.form__input')
+  Array.from(inputList).forEach((input) => {
+    if (input.value.length === 0) {
+      const button = form.querySelector('.form__button')
+      button.setAttribute('disabled', true)
+    } else {
+  }
+  })
 }
 /*Открытие popup Place+*/
 addPlaceOpenButton.addEventListener('click', function(event) {
+  clearInputErrors(editPlacePopup)
+  clearInputValues()
   openPopup(editPlacePopup)
+  checkAny(editPlacePopup)
 })
+
+/*очищение полей popup Place*/
+function clearInputValues() {
+  placeNameInput.value = '';
+  placeLinkInput.value = '';
+}
+
 /*Закрытие по крестику попап Профиля*/
 editProfileCloseButton.addEventListener('click', () => closePopup(profilePopUp));
 /*Закрытие по крестику popup Place+*/
@@ -50,6 +96,15 @@ editProfileOpenButton.addEventListener('click', function(event) {
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent;
 });
+
+function clearInputErrors(popup) {
+  const inputs = Array.from(popup.querySelectorAll('.form__input'))
+  inputs.forEach((input) => {
+    input.classList.remove('form__input_error')
+    const errorTextElement = document.querySelector(`.form__error_${input.id}`)
+    errorTextElement.textContent = ''
+  })
+}
 
 /*реализация функционала Сохранения формы*/
 function handleProfileForm (event) {
