@@ -24,6 +24,8 @@ const newCard = document.querySelector('#templateCard')/*шаблон Place*/
 const previewImg = document.querySelector('.popup__pic')/*Img Place*/
 const previewText = document.querySelector('.popup__text')/*текст Place*/
 
+const popupList = Array.from(document.querySelectorAll('.popup'))
+
 /*Открытие Закрытие popup*/
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -33,18 +35,10 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   enableEscListener()
   const openedPopup = document.querySelector('.popup_opened')
-  openedPopup.addEventListener('click', (e) => closeOverlay(e, popup))
-}
-/*Закрытие на Overlay*/
-function closeOverlay(e, popup) {
-  if (e.target === e.currentTarget) {
-    closePopup(popup)
-  }
 }
 /*Закрытие на ESC*/
 function onEscClose(e) {
-  console.log('onEscClose')
-  if (e.key === 'Escape') {
+ if (e.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened')
     closePopup(openedPopup)
   }
@@ -55,24 +49,11 @@ function enableEscListener() {
 function disableEscListener() {
   document.removeEventListener('keyup', onEscClose)
 }
-/*стилизация кнопки Сохранить*/
-function checkAny(popup) {
-  const form = popup.querySelector('.form')
-  const inputList = form.querySelectorAll('.form__input')
-  Array.from(inputList).forEach((input) => {
-    if (input.value.length === 0) {
-      const button = form.querySelector('.form__button')
-      button.setAttribute('disabled', true)
-    } else {
-  }
-  })
-}
 /*Открытие popup Place+*/
 addPlaceOpenButton.addEventListener('click', function(event) {
   clearInputErrors(editPlacePopup)
   clearInputValues()
   openPopup(editPlacePopup)
-  checkAny(editPlacePopup)
 })
 
 /*очищение полей popup Place*/
@@ -81,30 +62,13 @@ function clearInputValues() {
   placeLinkInput.value = '';
 }
 
-/*Закрытие по крестику попап Профиля*/
-editProfileCloseButton.addEventListener('click', () => closePopup(profilePopUp));
-/*Закрытие по крестику popup Place+*/
-editPlaceCloseButton.addEventListener('click', function(event) {
-  closePopup(editPlacePopup)
-});
-/*Закрытие по крестику попап Img*/
-prewiewImgCloseButton.addEventListener('click', () => closePopup(previewImgPopup));
-
-/*реализация функционала открытия попап и заполнения полей формы*/
+/*реализация функционала открытия попап Profile и заполнения полей формы*/
 editProfileOpenButton.addEventListener('click', function(event) {
   openPopup(profilePopUp);/*move класс*/
+  clearInputErrors(profilePopUp)
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent;
 });
-
-function clearInputErrors(popup) {
-  const inputs = Array.from(popup.querySelectorAll('.form__input'))
-  inputs.forEach((input) => {
-    input.classList.remove('form__input_error')
-    const errorTextElement = document.querySelector(`.form__error_${input.id}`)
-    errorTextElement.textContent = ''
-  })
-}
 
 /*реализация функционала Сохранения формы*/
 function handleProfileForm (event) {
@@ -176,3 +140,12 @@ function handleCreateCard(event) {
 
 placeForm.addEventListener('submit', handleCreateCard)
 
+/*цикл проходит по popup-ам и по клику на Оверлей и Крестик закрыает их*/
+popupList.forEach((popup) => {
+  popup.addEventListener('click', (event) => {
+    /*тарген-то,на что кликнули, кюрентТаргет то, что вызвало событие*/
+    if (event.target === event.currentTarget || event.target.classList.contains('popup__cross')) {
+      closePopup(event.currentTarget)
+    }
+ })
+})
