@@ -25,6 +25,7 @@ const previewImg = document.querySelector('.popup__pic')/*Img Place*/
 const previewText = document.querySelector('.popup__text')/*текст Place*/
 
 const popupList = Array.from(document.querySelectorAll('.popup'))
+const buttonSubmitPlace = document.querySelector('#popup-place-submit')/*кнопка Сохранить popup Place*/
 
 /*Открытие Закрытие popup*/
 function closePopup(popup) {
@@ -34,7 +35,6 @@ function closePopup(popup) {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   enableEscListener()
-  const openedPopup = document.querySelector('.popup_opened')
 }
 /*Закрытие на ESC*/
 function onEscClose(e) {
@@ -50,7 +50,8 @@ function disableEscListener() {
   document.removeEventListener('keyup', onEscClose)
 }
 /*Открытие popup Place+*/
-addPlaceOpenButton.addEventListener('click', function(event) {
+addPlaceOpenButton.addEventListener('click', function() {
+  setDisabledButton(buttonSubmitPlace, config.inactiveButtonClass)/*disable на повторном открытии*/
   clearInputErrors(editPlacePopup)
   clearInputValues()
   openPopup(editPlacePopup)
@@ -63,14 +64,14 @@ function clearInputValues() {
 }
 
 /*реализация функционала открытия попап Profile и заполнения полей формы*/
-editProfileOpenButton.addEventListener('click', function(event) {
+editProfileOpenButton.addEventListener('click', function() {
   openPopup(profilePopUp);/*move класс*/
   clearInputErrors(profilePopUp)
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent;
 });
 
-/*реализация функционала Сохранения формы*/
+/*реализация функционала Сохранения формы Profile*/
 function handleProfileForm (event) {
   event.preventDefault();
   userNameElement.textContent = userNameInput.value
@@ -143,9 +144,10 @@ placeForm.addEventListener('submit', handleCreateCard)
 /*цикл проходит по popup-ам и по клику на Оверлей и Крестик закрыает их*/
 popupList.forEach((popup) => {
   popup.addEventListener('click', (event) => {
-    /*тарген-то,на что кликнули, кюрентТаргет то, что вызвало событие*/
+    /*таргет-то,на что кликнули, кюрентТаргет то, что вызвало событие*/
     if (event.target === event.currentTarget || event.target.classList.contains('popup__cross')) {
       closePopup(event.currentTarget)
     }
  })
 })
+
